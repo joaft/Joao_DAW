@@ -19,6 +19,7 @@
             <th>Email</th>
             <th>Senha</th>
             <th>Foto</th>
+            <th>Editar</th>
             <th>Deletar</th>
         </tr>
         <% Usuarios.forEach(function(usuario){  %>
@@ -28,6 +29,9 @@
             <td><%=usuario.email%></td>
             <td><%=usuario.senha%></td>
             <td><%=usuario.foto%></td>
+            <td>
+                <a href="/edt/<%=usuario._id%>">Editar</a>
+            </td>
             <td>
                 <a href="/del/<%=usuario._id%>">Deletar</a>
             </td>
