@@ -1,15 +1,30 @@
+//imports
 var express = require("express");
 var app = express();
 var Usuario = require("./model/Usuario");
+var path = require("path");
+//imports
 
+//configs
+app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
-
 app.use(express.urlencoded({ extended: false }));
+//configs
 
+//rota para listar dados 
+app.get("/", function (req, res) {
+  Usuario.find({}).then(function (docs) {
+    res.render("list.ejs", { Usuarios: docs });
+  });
+});
+
+//rota de abrir tela do add
 app.get("/add", function (req, res) {
   res.render("index.ejs", {});
 });
+//fim abrir tela de add
 
+//adicionar dados no banco
 app.post("/add", function (req, res) {
   var usuario = new Usuario({
     nome: req.body.nome,
@@ -26,12 +41,8 @@ app.post("/add", function (req, res) {
     }
   });
 });
+//fim adicionar dados no banco
 
-app.get("/", function (req, res) {
-  Usuario.find({}).then(function (docs) {
-    res.render("list.ejs", { Usuarios: docs });
-  });
-});
 
 app.get("/edt/:id", function (req, res) {
   Usuario.findById(req.params.id).then(function (docs) {
