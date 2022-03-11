@@ -26,3 +26,18 @@ input{
 input[type="submit"]{
     width: 80px;
 }
+.pesquisa{
+    width: 60%;
+}
+
+.btn_pesquisa{
+    width: 10%;
+    padding: 10px
+}
+
+select{
+    width: 10%;
+    padding: 10px 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}

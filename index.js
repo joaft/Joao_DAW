@@ -11,11 +11,27 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 //configs
 
-//rota para listar dados 
+//rota para listar dados
 app.get("/", function (req, res) {
   Usuario.find({}).then(function (docs) {
     res.render("list.ejs", { Usuarios: docs });
   });
+});
+
+app.post("/", function (req, res) {
+  if (req.body.tipo == "nome") {
+    Usuario.find({ nome: new RegExp(req.body.pesquisa, "i") }).then(function (
+      docs
+    ) {
+      res.render("list.ejs", { Usuarios: docs });
+    });
+  } else {
+    Usuario.find({ email: new RegExp(req.body.pesquisa, "i") }).then(function (
+      docs
+    ) {
+      res.render("list.ejs", { Usuarios: docs });
+    });
+  }
 });
 
 //rota de abrir tela do add
@@ -42,7 +58,6 @@ app.post("/add", function (req, res) {
   });
 });
 //fim adicionar dados no banco
-
 
 app.get("/edt/:id", function (req, res) {
   Usuario.findById(req.params.id).then(function (docs) {
