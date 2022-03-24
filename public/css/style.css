@@ -3,7 +3,7 @@ body{
     max-width: 1024px;
 }
 table, tr, td, th{
-    border: 1px solid black;
+    border: 1px solid #1B73E9;;
 }
 td, th{
     text-align: center;
