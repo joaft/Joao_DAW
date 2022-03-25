@@ -3,15 +3,18 @@
 <form method="post">
     <input type="text" class="pesquisa" name="pesquisa">
     <select name="tipo">
-        <option value="nome">Nome</option>
-        <option value="email">Email</option>
+        <option value="nome">Terror</option>
+        <option value="nome">Comédia</option>
+        <option value="nome">Ação</option>
+        <option value="nome">Drama</option>
+        <option value="nome">Máfia</option>
     </select>
     <input type="submit" class="btn_pesquisa" value="Pesquisar">
 </form>
 
 <table>
         <tr>
-            <th>Nome</th>
+            <th>Id</th>
             <th>Nome</th>
             <th>Ano</th>
             <th>Diretor</th>
@@ -24,9 +27,11 @@
         <tr>
             <td><%=usuario._id%></td>
             <td><%=usuario.nome%></td>
-            <td><%=usuario.email%></td>
-            <td><%=usuario.senha%></td>
+            <td><%=usuario.ano%></td>
+            <td><%=usuario.diretor%></td>
+            <td><%=usuario.sinopse%></td>
             <td><%=usuario.foto%></td>
+            
             <td>
                 <a href="/edt/<%=usuario._id%>">
                     <img src="/images/edit.png">

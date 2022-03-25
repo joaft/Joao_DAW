@@ -20,7 +20,7 @@ app.get("/", function (req, res) {
 
 app.post("/", function (req, res) {
   if (req.body.tipo == "nome") {
-    Usuario.find({ nome: new RegExp(req.body.pesquisa, "i") }).then(function (
+    Usuario.find({ Terror: new RegExp(req.body.pesquisa, "i") }).then(function (
       docs
     ) {
       res.render("list.ejs", { Usuarios: docs });
@@ -44,8 +44,9 @@ app.get("/add", function (req, res) {
 app.post("/add", function (req, res) {
   var usuario = new Usuario({
     nome: req.body.nome,
-    email: req.body.email,
-    senha: req.body.senha,
+    ano: req.body.ano,
+    diretor: req.body.diretor,
+    sinopse: req.body.sinopse,
     foto: req.body.foto,
   });
 
@@ -71,8 +72,9 @@ app.post("/edt/:id", function (req, res) {
     req.params.id,
     {
       nome: req.body.nome,
-      email: req.body.email,
-      senha: req.body.senha,
+      ano: req.body.ano,
+      diretor: req.body.diretor,
+      sinopse: req.body.sinopse,
       foto: req.body.foto,
     },
     function (err, docs) {
